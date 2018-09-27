@@ -117,4 +117,12 @@ void j1Map::LoadTileSet()
 	tileset.tileheight = node.attribute("tileheight").as_uint();
 	tileset.spacing = node.attribute("spacing").as_uint();
 	tileset.margin = node.attribute("margin").as_uint();
+	while (node.child("data").child("title").next_sibling() != NULL)
+	{
+		node.child("data").child("title").attribute("gid").as_uint();
+
+
+		node.child("data").child("title").next_sibling();
+	}
+	for(uint i =0; tileset =  )
 }
