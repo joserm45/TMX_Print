@@ -70,12 +70,12 @@ public:
 
 private:
 	void LoadMapData();
-
+	void LoadTileSet();
 public:
 
 	// TODO 1: Add your struct for map info as public for now
 	map map;
-
+	tileset tileset;
 private:
 
 	pugi::xml_document	map_file;

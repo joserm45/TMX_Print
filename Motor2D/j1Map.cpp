@@ -73,12 +73,14 @@ bool j1Map::Load(const char* file_name)
 
 	// TODO 4: Create and call a private function to load a tileset
 	// remember to support more any number of tilesets!
-	
+	LoadTileSet();
 	
 	if(ret == true)
 	{
 		// TODO 5: LOG all the data loaded
 		// iterate all tilesets and LOG everything
+
+		//for(uint i = 0; i < tileset )
 	}
 
 	map_loaded = ret;
@@ -92,6 +94,27 @@ void j1Map::LoadMapData()
 	pugi::xml_node node;
 
 	node = doc.child("map");
-	map.orientation = node.attribute("orientation");
+	//map.orientation = node.attribute("orientation").value();
+	//map.renderorder = node.attribute("renderorder").as_string();
+	map.width = node.attribute("width").as_uint();
+	map.height = node.attribute("height").as_uint();
+	map.tilewidth = node.attribute("tilewidth").as_uint();
+	map.tileheight = node.attribute("tileheight").as_uint();
 
+}
+
+void j1Map::LoadTileSet()
+{
+	pugi::xml_document doc;
+	pugi::xml_parse_result result = doc.load_file("hello2.tmx");
+	pugi::xml_node node;
+
+	node = doc.child("tileset");
+
+	tileset.firstgid = node.attribute("firstgid").as_uint();
+	tileset.name = node.attribute("name").as_string();
+	tileset.tilewidth = node.attribute("tilewidth").as_uint();
+	tileset.tileheight = node.attribute("tileheight").as_uint();
+	tileset.spacing = node.attribute("spacing").as_uint();
+	tileset.margin = node.attribute("margin").as_uint();
 }
